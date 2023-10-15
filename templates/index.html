@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+</head>
+<body>
+    <h1>Cadastro de Usuário</h1>
+
+    <form action="/processar_cadastro/" method="post">
+        <!-- Campo de Nome -->
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br>
+
+        <!-- Campo de Idade -->
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required><br>
+
+        <!-- Campo de Sexo -->
+        <label for="sexo">Sexo:</label>
+        <input type="radio" id="sexo_m" name="sexo" value="masculino" required>
+        <label for="sexo_m">Masculino</label>
+        <input type="radio" id="sexo_f" name="sexo" value="feminino">
+        <label for="sexo_f">Feminino</label><br>
+
+        <!-- Campo de Escolaridade -->
+        <label for="escolaridade">Escolaridade:</label>
+        <select id="escolaridade" name="escolaridade" required>
+            <option value="">Selecione</option>
+            <option value="fundamental">Ensino Fundamental</option>
+            <option value="medio">Ensino Médio</option>
+            <option value="superior">Ensino Superior</option>
+        </select><br>
+
+        <!-- Campo de Local de Moradia -->
+        <label for="local_moradia">Local de Moradia:</label>
+        <input type="text" id="local_moradia" name="local_moradia" required><br>
+
+        <!-- Campo de Telefone -->
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required><br>
+
+        <!-- Campo de Nome da Mãe -->
+        <label for="nome_mae">Nome da Mãe:</label>
+        <input type="text" id="nome_mae" name="nome_mae" required><br>
+
+        <!-- Campo de Nome do Pai -->
+        <label for="nome_pai">Nome do Pai:</label>
+        <input type="text" id="nome_pai" name="nome_pai" required><br>
+
+        <!-- Botão de Submissão -->
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
