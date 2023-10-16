@@ -1,56 +1,124 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Cadastro</title>
-</head>
-<body>
-    <h1>Cadastro de Usuário</h1>
+{% extends "base.html" %}
 
-    <form action="/processar_cadastro/" method="post">
-        <!-- Campo de Nome -->
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br>
+{% block conteudo %}
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
+    </div>
 
-        <!-- Campo de Idade -->
-        <label for="idade">Idade:</label>
-        <input type="number" id="idade" name="idade" required><br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
-        <!-- Campo de Sexo -->
-        <label for="sexo">Sexo:</label>
-        <input type="radio" id="sexo_m" name="sexo" value="masculino" required>
-        <label for="sexo_m">Masculino</label>
-        <input type="radio" id="sexo_f" name="sexo" value="feminino">
-        <label for="sexo_f">Feminino</label><br>
 
-        <!-- Campo de Escolaridade -->
-        <label for="escolaridade">Escolaridade:</label>
-        <select id="escolaridade" name="escolaridade" required>
-            <option value="">Selecione</option>
-            <option value="fundamental">Ensino Fundamental</option>
-            <option value="medio">Ensino Médio</option>
-            <option value="superior">Ensino Superior</option>
-        </select><br>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Visitantes aguardando autorização</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                        </div>
+                        
+                        <div class="col-auto">
+                            <i class="fas fa-user-lock fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!-- Campo de Local de Moradia -->
-        <label for="local_moradia">Local de Moradia:</label>
-        <input type="text" id="local_moradia" name="local_moradia" required><br>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Visitantes no condomínio</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                        </div>
+                        
+                        <div class="col-auto">
+                            <i class="fas fa-user-clock fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!-- Campo de Telefone -->
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required><br>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitas finalizadas</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-check fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Visitantes registrados no mês atual</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
+            <h6 class="m-0 font-weight-bold text-primary">Visitantes recentes</h6>
+        </div>
 
-        <!-- Campo de Nome da Mãe -->
-        <label for="nome_mae">Nome da Mãe:</label>
-        <input type="text" id="nome_mae" name="nome_mae" required><br>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Horário de chegada</th>
+                        <th>Horário da autorização</th>
+                        <th>Autorizado por</th>
+                        <th>Mais informações</th>
+                    </thead>
 
-        <!-- Campo de Nome do Pai -->
-        <label for="nome_pai">Nome do Pai:</label>
-        <input type="text" id="nome_pai" name="nome_pai" required><br>
-
-        <!-- Botão de Submissão -->
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-</html>
+                    <tbody>
+                        {% for visitante in todos_visitantes %}
+                            <tr>
+                                <td>{{ visitante.nome_completo }}</td>
+                                <td>{{ visitante.cpf }}</td>
+                                <td>{{ visitante.horario_chegada }}</td>
+                                <td>{{ visitante.horario_autorizacao }}</td>
+                                <td>{{ visitante.morador_responsavel }}</td>
+                                <td>
+                                    <a href="#">
+                                        Ver informações
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock conteudo %}
